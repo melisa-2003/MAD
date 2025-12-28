@@ -1,10 +1,171 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ProfileFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- AppBar (固定在顶部，不滚动) -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Profile"
-        android:layout_gravity="center"/>
-</FrameLayout>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:title="Profile" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- ScrollView for all content below the AppBar -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+
+        <!-- Use a ConstraintLayout inside ScrollView to arrange content -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:id="@+id/profileImageView"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/profile_picture"
+                android:src="@drawable/ic_profile_placeholder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/usernameTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="?android:attr/textColorPrimary"
+                app:layout_constraintBottom_toTopOf="@+id/emailTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/profileImageView"
+                app:layout_constraintTop_toTopOf="@id/profileImageView"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="Username" />
+
+            <TextView
+                android:id="@+id/emailTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="?android:attr/textColorSecondary"
+                app:layout_constraintBottom_toBottomOf="@id/profileImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/profileImageView"
+                app:layout_constraintTop_toBottomOf="@id/usernameTextView"
+                tools:text="email@address.com" />
+
+            <!-- Preferences Section -->
+            <TextView
+                android:id="@+id/preferencesHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/preferences"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/profileImageView"
+                app:layout_constraintTop_toBottomOf="@+id/profileImageView" />
+
+            <TextView
+                android:id="@+id/interestsTextView"
+                style="@style/ProfileMenuItem"
+                android:text="@string/interests"
+                app:drawableEndCompat="@drawable/ic_arrow_forward"
+                app:layout_constraintTop_toBottomOf="@id/preferencesHeader"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:drawableTint="?attr/colorControlNormal" />
+
+            <TextView
+                android:id="@+id/manageNotificationTextView"
+                style="@style/ProfileMenuItem"
+                android:text="@string/manage_notification"
+                app:drawableEndCompat="@drawable/ic_arrow_forward"
+                app:layout_constraintTop_toBottomOf="@id/interestsTextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:drawableTint="?attr/colorControlNormal" />
+
+            <TextView
+                android:id="@+id/themeTextView"
+                style="@style/ProfileMenuItem"
+                android:text="@string/theme"
+                app:drawableEndCompat="@drawable/ic_arrow_forward"
+                app:layout_constraintTop_toBottomOf="@id/manageNotificationTextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:drawableTint="?attr/colorControlNormal" />
+
+            <!-- Support Section -->
+            <TextView
+                android:id="@+id/aboutUsTextView"
+                style="@style/ProfileMenuItem"
+                android:text="@string/about_us"
+                app:drawableEndCompat="@drawable/ic_arrow_forward"
+                app:layout_constraintTop_toBottomOf="@id/supportHeader"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:drawableTint="?attr/colorControlNormal" />
+
+            <TextView
+                android:id="@+id/contactUsTextView"
+                style="@style/ProfileMenuItem"
+                android:text="@string/contact_us"
+                app:drawableEndCompat="@drawable/ic_arrow_forward"
+                app:layout_constraintTop_toBottomOf="@id/aboutUsTextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:drawableTint="?attr/colorControlNormal" />
+
+            <TextView
+                android:id="@+id/contactUsTextView"
+                style="@style/ProfileMenuItem"
+                android:text="@string/contact_us"
+                app:drawableEndCompat="@drawable/ic_arrow_forward"
+                app:layout_constraintTop_toBottomOf="@id/aboutUsTextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Sign Out -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/signOutButton"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/sign_out"
+                app:icon="@drawable/ic_sign_out"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/contactUsTextView"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -108,6 +108,14 @@
     <!-- Menus -->
     <string name="share">Share</string>
     <string name="sign_out">Sign out</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="preferences">Preferences</string>
+    <string name="interests">Interests</string>
+    <string name="manage_notification">Manage Notification</string>
+    <string name="theme">Theme</string>
+    <string name="support">Support</string>
+    <string name="about_us">About Us</string>
+    <string name="contact_us">Contact Us</string>
 
     <!-- Spinner -->
     <string-array name="event_categories">
