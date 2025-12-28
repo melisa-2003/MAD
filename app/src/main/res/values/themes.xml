@@ -43,11 +43,17 @@
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">16dp</item>
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+        <item name="android:gravity">center_vertical</item> <!-- 垂直居中文字 -->
+        <item name="android:minHeight">48dp</item> <!-- 确保有足够的可点击区域 -->
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
 
-
+    <!-- 在 themes.xml 或 styles.xml 的 <resources> 标签内添加 -->
+    <style name="CustomToolbarStyle" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <!-- 通过修改内边距来间接控制图标的可视大小 -->        <!-- 值越大，图标看起来越小 -->
+        <item name="contentInsetStartWithNavigation">0dp</item>
     </style>
 
 </resources>

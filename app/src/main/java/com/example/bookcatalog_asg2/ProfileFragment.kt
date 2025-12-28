@@ -38,25 +38,28 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             parentFragmentManager.popBackStack()
         }
 
-        binding.interestsTextView.setOnClickListener {
-            // 这里仍然是跳转到Fragment
+        // 更新ID
+        binding.interestsContainer.setOnClickListener {
             navigateToFragment(InterestsFragment())
         }
 
-        binding.manageNotificationTextView.setOnClickListener {
-            // 这里仍然是跳转到Fragment
+        // 更新ID
+        binding.manageNotificationContainer.setOnClickListener {
             navigateToFragment(ManageNotificationFragment())
         }
 
-        binding.themeTextView.setOnClickListener {
+        // 更新ID
+        binding.themeContainer.setOnClickListener {
             Toast.makeText(context, "Theme clicked", Toast.LENGTH_SHORT).show()
         }
 
-        binding.aboutUsTextView.setOnClickListener {
+        // 更新ID
+        binding.aboutUsContainer.setOnClickListener {
             Toast.makeText(context, "About Us clicked", Toast.LENGTH_SHORT).show()
         }
 
-        binding.contactUsTextView.setOnClickListener {
+        // 更新ID
+        binding.contactUsContainer.setOnClickListener {
             Toast.makeText(context, "Contact Us clicked", Toast.LENGTH_SHORT).show()
         }
 
@@ -64,13 +67,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             auth.signOut()
             Toast.makeText(context, "Signed Out", Toast.LENGTH_SHORT).show()
 
-            // 修正 #2：启动 LoginActivity 而不是替换 Fragment
             val intent = Intent(activity, LoginActivity::class.java)
-            // 添加 Flag 来清除之前的活动栈，防止用户按返回键回到主界面
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
     }
+
 
     /**
      * 辅助方法，用于导航到另一个Fragment
